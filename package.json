@@ -1,0 +1,25 @@
+{
+  "name": "chai-chenak-catering",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm run build && wrangler dev",
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "db:generate": "drizzle-kit generate",
+    "db:local": "wrangler d1 migrations apply DB --local",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.51.0",
+    "drizzle-kit": "^0.31.11",
+    "drizzle-orm": "^0.45.3",
+    "node": "^22.23.2",
+    "sharp": "^0.35.4",
+    "wrangler": "^4.136.3"
+  },
+  "overrides": {
+    "esbuild": "^0.25.12"
+  }
+}

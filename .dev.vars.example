@@ -1,0 +1,2 @@
+# Local development only. In Sites, set ADMIN_EMAIL as a runtime secret.
+ADMIN_EMAIL="owner@example.com"
