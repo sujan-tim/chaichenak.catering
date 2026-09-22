@@ -22,7 +22,7 @@ export function validateInquiry(raw, now = new Date()) {
   if(!Number.isInteger(d.guests)||d.guests<1||d.guests>10000) throw new Error('Guest count must be a whole number between 1 and 10,000.');
   if(d.budget!==null&&(!Number.isInteger(d.budget)||d.budget<1||d.budget>10000000)) throw new Error('Please enter a valid total budget in whole dollars.');
   if(!occasions.has(d.occasion)) throw new Error('Please select an occasion.');
-  if(!Array.isArray(raw.menu)||raw.menu.length>6||raw.menu.some(id=>!validMenu.has(id))) throw new Error('Please check your menu selections.');
+  if(!Array.isArray(raw.menu)||raw.menu.length>validMenu.size||raw.menu.some(id=>!validMenu.has(id))) throw new Error('Please check your menu selections.');
   d.menu=[...new Set(raw.menu)].sort();d.email=d.email.toLowerCase();
   if(raw.consent!==true) throw new Error('Please agree to be contacted about your event.');
   if(!/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(d.requestId)) throw new Error('Please reload the page and try again.');
@@ -66,12 +66,20 @@ async function submit(request, env, ctx) {
   } catch { console.error('Inquiry storage unavailable');return json({error:'We couldn’t save your inquiry. Please try again or call (732) 317-1175.'},503); }
 }
 const statuses = new Set(['new','contacted','quoted','booked','closed']);
-function isOwner(request, env) {
-  const email=request.headers.get('oai-authenticated-user-email');
-  return Boolean(request.headers.get('oai-authenticated-user-id') && env.ADMIN_EMAIL && email?.toLowerCase()===env.ADMIN_EMAIL.toLowerCase());
+async function isOwner(request, env) {
+  if(typeof env.ADMIN_PASSWORD!=='string'||env.ADMIN_PASSWORD.length<32)return false;
+  const url=new URL(request.url);
+  if(url.protocol!=='https:'&&!['localhost','127.0.0.1','[::1]'].includes(url.hostname))return false;
+  const authorization=request.headers.get('authorization')||'';
+  if(!authorization.startsWith('Basic ')||authorization.length>2048)return false;
+  let credentials;try{credentials=atob(authorization.slice(6));}catch{return false;}
+  // Compare fixed-length digests without an early exit on mismatched characters.
+  const supplied=await hash(credentials),expected=await hash('admin:'+env.ADMIN_PASSWORD);
+  let difference=0;for(let i=0;i<supplied.length;i++)difference|=supplied.charCodeAt(i)^expected.charCodeAt(i);
+  return difference===0;
 }
 async function admin(request,env){
-  if(!isOwner(request,env))return json({error:'Access is limited to the site owner.'},403);
+  if(!await isOwner(request,env))return json({error:'Owner sign-in is required.'},401);
   const url=new URL(request.url);
   try{
     if(request.method==='GET'&&url.pathname==='/api/admin/inquiries'){
@@ -97,8 +105,8 @@ export default {
   async fetch(request,env,ctx){
     const path=new URL(request.url).pathname;
     if(path==='/admin'||path==='/admin.html'){
-      if(!request.headers.get('oai-authenticated-user-id'))return new Response(null,{status:302,headers:{Location:'/signin-with-chatgpt?return_to=%2Fadmin','Cache-Control':'no-store'}});
-      if(!isOwner(request,env))return new Response('Access is limited to the site owner.',{status:403,headers:{'Cache-Control':'no-store'}});
+      if(!env.ADMIN_PASSWORD||env.ADMIN_PASSWORD.length<32)return new Response('Owner access has not been configured.',{status:503,headers:{'Cache-Control':'no-store'}});
+      if(!await isOwner(request,env))return new Response('Owner sign-in is required.',{status:401,headers:{'WWW-Authenticate':'Basic realm="Chai Chenak owner inbox", charset="UTF-8"','Cache-Control':'no-store'}});
       const response=await env.ASSETS.fetch(new Request(new URL('/admin',request.url),request));
       const protectedResponse=new Response(response.body,response);protectedResponse.headers.set('Cache-Control','private, no-store');protectedResponse.headers.set('X-Robots-Tag','noindex, nofollow');return protectedResponse;
     }

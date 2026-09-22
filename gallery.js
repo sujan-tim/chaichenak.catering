@@ -1,0 +1,20 @@
+// Original event photographs, grouped without duplicate views.
+export const galleryPhotos = [
+ ['b4ee9e811a59','Garden reception at dusk','events'],
+ ['466dc329b96d','Floral wedding reception tables','events'],
+ ['05c1781f9a88','An outdoor celebration buffet','buffets'],
+ ['3878f3c50324','An elegant dessert display','desserts'],
+ ['ab537150ac53','Our signature truck-art paan booth','stations'],
+ ['af60be72a67f','Golden dessert cups on display','desserts'],
+ ['cbfc9b10e3ec','Papri chaat and colorful accompaniments','stations'],
+ ['82831dc2b72e','Fruit, cheese, and grazing platters','buffets'],
+ ['a9b8ad2b8c88','A tented reception ready for guests','events'],
+ ['d9645475bec2','Fresh pizza at the station','stations'],
+ ['46a54ea647f1','A colorful fruit-custard display','desserts'],
+ ['5625ff79255b','Individual desserts for an evening event','desserts'],
+ ['20478433d0dc','Grazing platters and fresh accompaniments','buffets'],
+ ['a865e7e09d22','A generous spread beneath the marquee','buffets'],
+ ['ebbd636ead28','Outdoor catering in the garden','events'],
+ ['ec03f155d02f','A barbecue platter ready to share','buffets'],
+ ['2e89061245eb','The finishing details at our paan station','stations'],
+].map(([file,alt,category])=>({image:`assets/${file}.jpg`,alt,category}));

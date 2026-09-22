@@ -9,7 +9,8 @@
     "test": "node --test tests/*.test.mjs",
     "db:generate": "drizzle-kit generate",
     "db:local": "wrangler d1 migrations apply DB --local",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "media:prepare": "node scripts/prepare-media.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.51.0",

@@ -10,6 +10,7 @@
 
 <link rel="stylesheet" href="/styles.css">
 <link rel="stylesheet" href="/enhancements.css">
+<link rel="stylesheet" href="/refinement.css">
 <meta name="description" content="Pakistani catering for weddings, corporate events, and private celebrations across New York and New Jersey. Explore live stations and plan your event with Chai Chenak.">
 <meta name="theme-color" content="#241B14"><link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="Chai Chenak | Catering &amp; Events"><meta property="og:description" content="A little tradition. An unforgettable gathering. Plan your Pakistani catering menu with Chai Chenak."><meta property="og:type" content="website">
@@ -19,12 +20,13 @@
 
 
 
-<header>
+<header class="site-header">
   <nav class="nav">
-    <a href="#top" class="logo"><img src="assets/b5c715e12e5b.png" alt="Chai Chenak Catering and Events"></a>
+    <a href="/" class="logo"><img src="assets/b5c715e12e5b.png" alt="Chai Chenak Catering and Events"></a>
     <div class="nav-links" id="navigation">
-      <a href="#story">About</a>
-      <a href="#menu">Build Your Menu</a>
+      <a href="#story">Our story</a>
+<div class="nav-stations"><button type="button" class="nav-disclosure" aria-expanded="false" aria-controls="station-navigation">Our stations <span aria-hidden="true">⌄</span></button><div id="station-navigation" class="station-navigation" hidden><span class="eyebrow">Find your favorites</span><a href="/menu?category=savory" data-category-link="savory">Street food &amp; savory <span>↗</span></a><a href="/menu?category=buffet" data-category-link="buffet">Buffet &amp; accompaniments <span>↗</span></a><a href="/menu?category=sweet" data-category-link="sweet">Desserts &amp; paan <span>↗</span></a><a href="/menu?category=brunch" data-category-link="brunch">Breakfast &amp; brunch <span>↗</span></a><a href="/menu?category=drinks" data-category-link="drinks">Drinks <span>↗</span></a><a href="/menu?category=all" data-category-link="all" class="view-all-stations">Explore all stations</a></div></div>
+      <a href="/menu" class="nav-plan">Your menu <span id="nav-plan-count" hidden>0</span></a>
       <a href="#services">Services</a>
       <a href="#gallery">Gallery</a>
     </div>
@@ -38,70 +40,12 @@
 
 <!-- HERO -->
 <main id="main">
-<section class="hero" aria-label="Catering highlights">
-
-  <div class="hero-slide active">
-    <div class="ph has-photo"><img class="real-photo" src="assets/a865e7e09d22.jpg" alt="dessert buffet with baklava and gulab jamun"></div>
-    <div class="hero-content">
-      <span class="eyebrow">Pakistani Fine Catering &middot; New York &amp; New Jersey</span>
-      <h1>Bold Flavors, Straight From the <em>Tandoor</em></h1>
-      <p>From smoky bun kabab to sizzling chicken karahi, Chai Chenak brings the bold, spice-forward cooking of Pakistan's Sindh region to your wedding, gala, or gathering.</p>
-      <div class="hero-btns">
-        <a href="#contact" class="btn btn-gold">Start Your Inquiry</a>
-        <a href="#stations" class="btn btn-outline" style="border-color:rgba(255,255,255,.6); color:#fff;">View Culinary Stations</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="hero-slide">
-    <div class="ph has-photo"><img class="real-photo" src="assets/68b5f39a3a9f.jpg" alt="outdoor tented buffet spread"></div>
-    <div class="hero-content">
-      <span class="eyebrow">Interactive Dining</span>
-      <h2>Unforgettable <em>Feasts</em> &amp; Culinary Art</h2>
-      <p>Chai Chenak Catering and Events provides Pakistani-rooted catering across New York and New Jersey, specializing in weddings, corporate events, private parties, and galas. Restaurant-quality cuisine, personalized menus, and exceptional service for every event.</p>
-      <div class="hero-btns">
-        <a href="#contact" class="btn btn-gold">Start Planning</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="hero-slide">
-    <div class="ph has-photo"><img class="real-photo" src="assets/2e89061245eb.jpg" alt="Chai Chenak Catering — spice and paan display, styled tablescape"></div>
-    <div class="hero-content">
-      <span class="eyebrow">Chai Chenak Catering and Events</span>
-      <h2>Thoughtfully Crafted <em>Cuisine</em></h2>
-      <p>Seasonal menus, refined presentation, and full-service hospitality for everything from intimate private dinners to grand galas.</p>
-      <div class="hero-btns">
-        <a href="#menu" class="btn btn-gold">View Our Menus</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="hero-slide">
-    <div class="ph has-photo"><img class="real-photo" src="assets/062a99a40cd9.jpg" alt="Chai Chenak Catering — colorful outdoor event setup with truck-art booths"></div>
-    <div class="hero-content">
-      <span class="eyebrow">Chai Chenak Catering and Events</span>
-      <h2>Vibrant <em>Décor</em> &amp; Immersive Setups</h2>
-      <p>Custom Pakistani truck-art booths, jewel-toned linens, and thoughtfully styled stations turn every event into a fully immersive cultural experience.</p>
-      <div class="hero-btns">
-        <a href="#services" class="btn btn-gold">Explore Services</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="hero-dots">
-<button class="carousel-pause" type="button" aria-pressed="false">Pause slides</button>
-    <button class="dot active" data-slide="0" aria-label="Slide 1"></button>
-    <button class="dot" data-slide="1" aria-label="Slide 2"></button>
-    <button class="dot" data-slide="2" aria-label="Slide 3"></button>
-    <button class="dot" data-slide="3" aria-label="Slide 4"></button>
-  </div>
-
-  <svg class="peaks" viewBox="0 0 1440 160" preserveAspectRatio="none">
-    <path fill="#F7F2E6" d="M0 160 L0 100 L120 40 L220 90 L340 20 L460 85 L600 10 L760 95 L900 35 L1040 90 L1180 25 L1320 80 L1440 45 L1440 160 Z"/>
-  </svg>
+<section class="hero cinematic-hero" aria-label="Chai Chenak catering and events">
+<div class="hero-media"><img src="media/hero.webp" alt="Chai Chenak grazing table, live crêpe station, and bakery display" width="1536" height="864" fetchpriority="high"><video id="hero-film" data-src="/media/hero.mp4" poster="/media/hero.webp" muted playsinline loop preload="none" aria-hidden="true" tabindex="-1"></video></div>
+<div class="hero-shade"></div><div class="hero-content"><span class="eyebrow hero-enter">PAKISTANI ROOTS. UNFORGETTABLE GATHERINGS.</span><h1 class="hero-enter">A little tradition.<br>A lot of <em>occasion.</em></h1><p class="hero-enter">Live culinary stations, generous tables, and the warmth of Pakistani hospitality. Made for your people.</p><div class="hero-btns hero-enter"><a href="/menu" class="btn btn-gold">View menu <span aria-hidden="true">↗</span></a><a href="#contact" class="hero-text-link">Let’s plan your event <span aria-hidden="true">↗</span></a></div></div>
+<div class="hero-bottom"><span class="hero-location">NEW YORK &amp; NEW JERSEY <i></i> CATERING &amp; EVENTS</span><button id="motion-toggle" type="button" aria-pressed="false"><span class="motion-icon" aria-hidden="true">Ⅱ</span><span class="motion-label">Pause motion</span></button><a href="/menu" class="scroll-cue">A taste of what’s to come <span aria-hidden="true">↓</span></a></div>
 </section>
-
+<div class="occasion-ribbon"><span>Weddings</span><i aria-hidden="true">✳</i><span>Corporate gatherings</span><i aria-hidden="true">✳</i><span>Private celebrations</span><i aria-hidden="true">✳</i><span>Moments worth sharing</span></div>
 <!-- TRUCK ART DIVIDER (signature element) -->
 <div class="flags">
   <svg viewBox="0 0 1180 60" xmlns="http://www.w3.org/2000/svg">
@@ -114,14 +58,14 @@
 <!-- STORY -->
 <section class="story" id="story">
   <div class="wrap">
-    <div class="story-copy">
-      <span class="eyebrow">Our Story</span>
-      <h2>About Chai Chenak</h2>
+    <div class="story-copy" data-reveal>
+      <span class="eyebrow">Rooted in New Brunswick. Inspired by Pakistan.</span>
+      <h2>From our kitchen,<br>to <em>your occasion.</em></h2>
       <p>Chai Chenak began in New Brunswick, NJ, founded by Khizer Ali Syed to bring the food and culture of Pakistan's Sindh region to New Jersey &mdash; a truck-and-folk-art themed restaurant with colorful, hand-painted decor pulled straight from Pakistani truck art. Our catering arm brings that same kitchen to your event.</p>
-      <p>Every menu is built around what's cooked to order in front of your guests: bun kabab off the griddle, chicken karahi finished tableside, chai poured fresh from the pot. No steam trays, no shortcuts &mdash; restaurant food, at event scale.</p>
+      <p>We bring people together over the flavors we grew up with. From a bun kebab off the griddle to a vibrant dessert table, our stations bring a sense of discovery, generosity, and home to your gathering.</p>
       <a href="#services" class="btn btn-outline">Explore our catering services</a>
     </div>
-    <div class="story-photo">
+    <div class="story-photo" data-reveal>
       <div class="ph has-photo"><img class="real-photo" src="assets/3878f3c50324.jpg" alt="Chai Chenak Catering — elegant dessert display"></div>
     </div>
   </div>
@@ -132,7 +76,7 @@
   <div class="wrap">
     <div class="difference-head">
       <span class="eyebrow">The Chai Chenak Difference</span>
-      <h2>What Sets Us Apart</h2>
+      <h2>More than a menu.<br><em>A feeling you remember.</em></h2>
       <p>Full-service Pakistani catering built for weddings, corporate events, and private celebrations across the tri-state area.</p>
     </div>
     <div class="diff-grid">
@@ -160,53 +104,18 @@
   </div>
 </section>
 
-<!-- VISUAL ART INTRO -->
-<section class="art-intro">
-  <h2>Interactive Culinary Stations</h2>
-  <p>Live cooking stations designed to bring the energy of a Pakistani kitchen right into your event &mdash; grilled, simmered, and served in front of your guests.</p>
-</section>
-
-<!-- STATIONS -->
-<section class="stations" id="stations">
-  <div class="wrap">
-    <div class="stations-head">
-      <h3>Event Stations</h3>
-      <p>Interactive hot stations where guests watch their plates come together, made to order.</p>
-    </div>
-    <div class="station-grid">
-      <div class="station-card">
-        <div class="station-photo">
-          <div class="ph has-photo"><img class="real-photo" src="assets/afdd03e3cc57.jpg" alt="Chai Chenak Catering — live Papri Chaat station"></div>
-        </div>
-        <h4>Bun Kabab &amp; Chaat Station</h4>
-      </div>
-      <div class="station-card">
-        <div class="station-photo">
-          <div class="ph has-photo"><img class="real-photo" src="assets/ec03f155d02f.jpg" alt="Chai Chenak Catering — Dynamite Chicken"></div>
-        </div>
-        <h4>Live BBQ Station</h4>
-      </div>
-    </div>
-
-    <div class="market-cta">
-      <h3>Chef Curated Market Stations</h3>
-      <p>Choose the stations you love and tell us about your event. Our team will put together a personalized menu and quote.</p>
-      <a href="#menu" class="btn btn-primary">Build Your Menu <span aria-hidden="true">↗</span></a>
-    </div>
-  </div>
-</section>
-
-<section class="menu-planner" id="menu"><div class="wrap">
-<div class="section-heading"><div><span class="eyebrow">Your gathering, your way</span><h2>A menu made for <em>your people.</em></h2></div><p>Start with the flavors you love. Add your favorites to an event shortlist, and we’ll take care of the details.</p></div>
-<div class="planner-layout"><div><div class="menu-controls"><div class="filter-group" role="group" aria-label="Filter menu"><button class="filter active" data-filter="all" aria-pressed="true">All experiences</button><button class="filter" data-filter="savory" aria-pressed="false">Savory stations</button><button class="filter" data-filter="sweet" aria-pressed="false">Sweet endings</button></div><label class="search-label"><span class="sr-only">Search menu</span><input type="search" id="menu-search" placeholder="Search the menu…"></label></div>
-<p class="sr-only" id="menu-results" role="status"></p><div class="menu-grid" id="menu-grid"></div><p id="menu-empty" hidden>No matching experiences. Try a different search or filter.</p><p class="menu-note">Menu selections are requests, subject to availability. Please share allergies and dietary needs with our team.</p></div>
-<aside class="plan-card" aria-label="Your event shortlist"><span class="eyebrow">A good gathering starts here</span><h3>Your event plan</h3><p id="selection-count" role="status">Choose a few favorites to get started.</p><ul id="selected-menu"></ul><div class="plan-fields"><label for="plan-guests">Guests<input id="plan-guests" type="number" min="1" max="10000" value="100"></label><label for="plan-budget">Your total budget ($)<input id="plan-budget" type="number" min="1" max="10000000" step="1" placeholder="Optional"></label></div><div class="budget-result"><span>Budget per guest</span><strong id="per-guest">—</strong></div><p class="fine-print">A planning guide based on your budget, not a catering quote. Final pricing depends on your menu, venue, staffing, and service.</p><a class="btn btn-primary" href="#contact" id="use-plan">Request a personalized quote <span aria-hidden="true">↗</span></a><button type="button" class="text-button" id="download-plan">Download event plan</button><button type="button" class="text-button" id="clear-plan">Clear selections</button><p class="fine-print">Your shortlist is saved on this device. Contact details are not.</p></aside></div></div></section>
+<div id="stations" class="station-anchor"></div>
+<section class="menu-planner featured-menu" id="menu"><div class="wrap">
+<div class="section-heading"><div><span class="eyebrow">A taste of our collection</span><h2>Five favorites.<br><em>So much more to discover.</em></h2></div><p>Live stations, celebration buffets, and a sweet finishing touch. Start with a favorite, then explore the full menu.</p></div>
+<div class="menu-grid featured-grid" id="menu-grid"></div>
+<div class="featured-menu-footer"><p>Your occasion deserves a menu of its own.</p><a href="/menu" class="btn btn-primary" id="view-full-menu">View menu <span aria-hidden="true">↗</span></a></div>
+</div></section>
 <!-- CURATED SERVICES -->
 <section class="services" id="services">
   <div class="wrap">
     <div class="services-head">
-      <h2>Curated Services</h2>
-      <p>Explore our range of catering services designed to elevate your specific event type.</p>
+      <span class="eyebrow">Every occasion, thoughtfully catered</span><h2>Set the scene.<br><em>We’ll set the table.</em></h2>
+      <p>A wedding full of traditions. A team worth celebrating. A table full of your favorite people.</p>
     </div>
     <div class="service-grid">
       <div class="service-card">
@@ -234,59 +143,31 @@
   </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section class="experience">
-  <div class="wrap">
-    <div class="experience-head">
-      <span class="eyebrow">In Motion</span>
-      <h2>The Experience</h2>
-      <p>A taste of the artistry, the atmosphere, and the moments we create.</p>
-    </div>
-    <button type="button" class="btn btn-gold" id="load-instagram">Load event videos from Instagram</button><p class="embed-note">Loading videos connects to Instagram. You can also open each event directly.</p><div class="experience-grid ig-grid">
-      <div class="ig-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Db6bOMFKn_M/" data-instgrm-version="14" style="background:#FFF; border-radius:10px; margin:0; max-width:100%; min-width:236px; width:100%;"><a href="https://www.instagram.com/p/Db6bOMFKn_M/" target="_blank" rel="noopener noreferrer">Watch this event on Instagram ↗</a></blockquote></div>
-      <div class="ig-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Db501bIKFKF/" data-instgrm-version="14" style="background:#FFF; border-radius:10px; margin:0; max-width:100%; min-width:236px; width:100%;"><a href="https://www.instagram.com/p/Db501bIKFKF/" target="_blank" rel="noopener noreferrer">Watch this event on Instagram ↗</a></blockquote></div>
-      <div class="ig-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DcbPA6Hq8eX/" data-instgrm-version="14" style="background:#FFF; border-radius:10px; margin:0; max-width:100%; min-width:236px; width:100%;"><a href="https://www.instagram.com/p/DcbPA6Hq8eX/" target="_blank" rel="noopener noreferrer">Watch this event on Instagram ↗</a></blockquote></div>
-      <div class="ig-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DbV25BOKrE4/" data-instgrm-version="14" style="background:#FFF; border-radius:10px; margin:0; max-width:100%; min-width:236px; width:100%;"><a href="https://www.instagram.com/p/DbV25BOKrE4/" target="_blank" rel="noopener noreferrer">Watch this event on Instagram ↗</a></blockquote></div>
-      <div class="ig-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Da5StmuqGZo/" data-instgrm-version="14" style="background:#FFF; border-radius:10px; margin:0; max-width:100%; min-width:236px; width:100%;"><a href="https://www.instagram.com/p/Da5StmuqGZo/" target="_blank" rel="noopener noreferrer">Watch this event on Instagram ↗</a></blockquote></div>
-      <div class="ig-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Da3AWZ2K2KJ/" data-instgrm-version="14" style="background:#FFF; border-radius:10px; margin:0; max-width:100%; min-width:236px; width:100%;"><a href="https://www.instagram.com/p/Da3AWZ2K2KJ/" target="_blank" rel="noopener noreferrer">Watch this event on Instagram ↗</a></blockquote></div>
-    </div>
-  </div>
-</section>
-
+<section class="gathering-banner"><img src="assets/062a99a40cd9.jpg" alt="Colorful Chai Chenak catering booths at an outdoor event" loading="lazy" width="1400" height="900"><div class="gathering-overlay"></div><div class="wrap" data-reveal><span class="eyebrow">Bring your people. We’ll bring the flavor.</span><h2>Make it a gathering<br>they’ll <em>talk about.</em></h2><a href="#contact" class="btn btn-gold">Tell us what you’re planning <span aria-hidden="true">↗</span></a></div></section>
 <!-- GALLERY -->
 <section class="gallery" id="gallery">
   <div class="wrap">
     <div class="gallery-head">
       <span class="eyebrow">Moments We've Catered</span>
-      <h2>Gallery</h2>
+      <h2>Real tables.<br><em>Beautiful memories.</em></h2>
       <p>A closer look at the spreads, stations, and setups from real Chai Chenak events.</p>
     </div>
-    <div class="gallery-grid">
-      <button type="button" class="g-item g-tall" aria-haspopup="dialog"><img src="assets/b4ee9e811a59.jpg" alt="Evening Reception Setup"></button>
-      <button type="button" class="g-item g-tall" aria-haspopup="dialog"><img src="assets/af60be72a67f.jpg" alt="Thai Mango Mousse Cups"></button>
-      <button type="button" class="g-item" aria-haspopup="dialog"><img src="assets/d9645475bec2.jpg" alt="Flatbread Pizza Station"></button>
-      <button type="button" class="g-item g-wide" aria-haspopup="dialog"><img src="assets/d6aee42417c4.jpg" alt="Garden Party in Bloom"></button>
-      <button type="button" class="g-item" aria-haspopup="dialog"><img src="assets/ab537150ac53.jpg" alt="Paan Shop Truck-Art Booth"></button>
-      <button type="button" class="g-item" aria-haspopup="dialog"><img src="assets/46a54ea647f1.jpg" alt="Chai Chenak Catering — trifle fruit custard"></button>
-      <button type="button" class="g-item g-tall" aria-haspopup="dialog"><img src="assets/5625ff79255b.jpg" alt="Chai Chenak Catering — dessert cups, outdoor evening event"></button>
-      <button type="button" class="g-item" aria-haspopup="dialog"><img src="assets/82831dc2b72e.jpg" alt="Chai Chenak Catering — cheese board and fruit platter"></button>
-      <button type="button" class="g-item g-wide" aria-haspopup="dialog"><img src="assets/20478433d0dc.jpg" alt="Chai Chenak Catering — crudite and hummus display"></button>
-      <button type="button" class="g-item g-tall" aria-haspopup="dialog"><img src="assets/05c1781f9a88.jpg" alt="Chai Chenak Catering — outdoor tented buffet"></button>
-      <button type="button" class="g-item" aria-haspopup="dialog"><img src="assets/cbfc9b10e3ec.jpg" alt="Chai Chenak Catering — live Papri Chaat station"></button>
-    </div>
+    <!-- GALLERY_ITEMS -->
   </div>
 </section>
+
+<section class="social-gallery" id="instagram"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">From our Instagram</span><h2>More moments.<br><em>More reasons to gather.</em></h2></div><p>A few stories from our feed. Open any post to see the full moment on Instagram.</p></div><div class="instagram-grid"><article class="instagram-card"><div class="instagram-preview"><iframe data-instagram-src="https://www.instagram.com/p/Db501bIKFKF/embed/" title="Chai Chenak Instagram post 1" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div><a href="https://www.instagram.com/p/Db501bIKFKF/" target="_blank" rel="noopener noreferrer"><span>View post on Instagram</span><span aria-hidden="true">↗</span></a></article><article class="instagram-card"><div class="instagram-preview"><iframe data-instagram-src="https://www.instagram.com/p/Db6bOMFKn_M/embed/" title="Chai Chenak Instagram post 2" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div><a href="https://www.instagram.com/p/Db6bOMFKn_M/" target="_blank" rel="noopener noreferrer"><span>View post on Instagram</span><span aria-hidden="true">↗</span></a></article><article class="instagram-card"><div class="instagram-preview"><iframe data-instagram-src="https://www.instagram.com/p/DbV25BOKrE4/embed/" title="Chai Chenak Instagram post 3" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div><a href="https://www.instagram.com/p/DbV25BOKrE4/" target="_blank" rel="noopener noreferrer"><span>View post on Instagram</span><span aria-hidden="true">↗</span></a></article></div><p class="social-note">If a preview is unavailable, open the post directly on Instagram.</p></div></section>
 
 <!-- CATERING INQUIRY -->
 <section class="contact" id="contact">
   <div class="wrap">
     <div class="contact-head">
       <span class="eyebrow">Let's Create Magic Together</span>
-      <h2>Catering Inquiry</h2>
+      <h2>Your occasion.<br><em>Our next great gathering.</em></h2>
       <p>Tell us a little about your gathering. We’ll review your date, venue, and menu preferences and get in touch to plan the details.</p>
     </div>
     <div class="contact-grid">
-      <div class="contact-info">
+      <div class="contact-info" data-reveal>
         <h3>Get In Touch</h3>
         <p>We'd love to hear about your event and discuss how we can make it extraordinary.</p>
 
@@ -302,7 +183,7 @@
           <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 6l-10 7L2 6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <div>
             <h4>Email</h4>
-            <p><a href="mailto:catering@chaichenak.catering">catering@chaichenak.catering</a></p>
+            <p><a href="mailto:chaichenakcatering@gmail.com">chaichenakcatering@gmail.com</a></p>
           </div>
         </div>
 
@@ -321,7 +202,7 @@
         </div>
       </div>
 
-      <div class="contact-form">
+      <div class="contact-form" data-reveal>
         <div class="contact-form-head">
           <div class="form-logo">Chai Chenak<span>Catering and Events</span></div>
         </div>
@@ -330,11 +211,11 @@
 <fieldset id="event-step"><legend>Let’s start with your event</legend><div class="form-row"><div class="form-field"><label for="event-type">Occasion <span class="req">*</span></label><select id="event-type" name="occasion" required><option value="">Select an occasion</option><option>Wedding</option><option>Corporate Event</option><option>Private Party / Gala</option><option>Other</option></select></div><div class="form-field"><label for="guests">Guest count <span class="req">*</span></label><input id="guests" name="guests" type="number" min="1" max="10000" required value="100"></div></div>
 <div class="form-row"><div class="form-field"><label for="event-date">Event date <span class="req">*</span></label><input id="event-date" name="date" type="date" required></div><div class="form-field"><label for="event-time">Event time</label><input id="event-time" name="time" type="time"></div></div>
 <div class="form-field"><label for="venue">Venue or city <span class="req">*</span></label><input id="venue" name="venue" maxlength="200" placeholder="Venue name or city and state" required autocomplete="off"></div>
-<div class="form-field"><label for="budget">Total budget ($)</label><input id="budget" name="budget" type="number" min="1" max="10000000" step="1" placeholder="Optional"></div><div class="form-shortlist"><strong>Your menu shortlist</strong><p id="form-shortlist">No selections yet — we can help you choose.</p><a href="#menu">Explore the menu</a></div><button class="btn btn-primary" type="button" id="next-step">Continue to your details <span aria-hidden="true">→</span></button></fieldset>
+<div class="form-field"><label for="budget">Total budget ($)</label><input id="budget" name="budget" type="number" min="1" max="10000000" step="1" placeholder="Optional"></div><div class="form-shortlist"><strong>Your menu shortlist</strong><p id="form-shortlist">No selections yet — we can help you choose.</p><a href="/menu">Explore the menu</a></div><button class="btn btn-primary" type="button" id="next-step">Continue to your details <span aria-hidden="true">→</span></button></fieldset>
 <fieldset id="details-step" hidden disabled><legend>How can we reach you?</legend><div class="form-row"><div class="form-field"><label for="first-name">First name <span class="req">*</span></label><input id="first-name" name="firstName" autocomplete="given-name" maxlength="80" required></div><div class="form-field"><label for="last-name">Last name <span class="req">*</span></label><input id="last-name" name="lastName" autocomplete="family-name" maxlength="80" required></div></div>
 <div class="form-field"><label for="email">Email <span class="req">*</span></label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" required></div><div class="form-field"><label for="phone">Phone number <span class="req">*</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" minlength="7" maxlength="30" required></div><div class="form-field"><label for="message">Anything else we should know?</label><textarea id="message" name="message" maxlength="3000" placeholder="Dietary needs, allergies, service preferences, or what you have in mind…"></textarea></div>
 <div class="honeypot" aria-hidden="true"><label for="website">Leave this blank</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div><label class="consent"><input type="checkbox" name="consent" required> <span>I agree to be contacted about this event. <a href="#privacy">How we use your details</a></span></label><p class="fine-print">An inquiry does not reserve a date or confirm a booking.</p><div class="form-actions"><button type="button" class="btn btn-outline" id="back-step">Back</button><button type="submit" class="btn btn-primary" id="submit-inquiry">Send inquiry <span aria-hidden="true">↗</span></button></div></fieldset><p id="form-status" role="status" tabindex="-1"></p></form>
-<div id="inquiry-success" hidden tabindex="-1"><span class="eyebrow">The first step to something special</span><h3>Your inquiry is received.</h3><p>We’ve saved your event details for our team to review. Keep your reference below for follow-up.</p><strong id="inquiry-reference"></strong><p>Your date and menu will be confirmed directly with our team.</p><a href="tel:+17323171175" class="btn btn-primary">Call our team</a><button id="new-inquiry" type="button" class="text-button">Plan another event</button></div><noscript><p>To send an inquiry, enable JavaScript or <a href="mailto:catering@chaichenak.catering">email our catering team</a>.</p></noscript>
+<div id="inquiry-success" hidden tabindex="-1"><span class="eyebrow">The first step to something special</span><h3>Your inquiry is received.</h3><p>We’ve saved your event details for our team to review. Keep your reference below for follow-up.</p><strong id="inquiry-reference"></strong><p>Your date and menu will be confirmed directly with our team.</p><a href="tel:+17323171175" class="btn btn-primary">Call our team</a><button id="new-inquiry" type="button" class="text-button">Plan another event</button></div><noscript><p>To send an inquiry, enable JavaScript or <a href="mailto:chaichenakcatering@gmail.com">email our catering team</a>.</p></noscript>
       </div>
     </div>
   </div>
@@ -342,7 +223,7 @@
 
 
 
-<section class="faq-section" id="faq"><div class="wrap faq-layout"><div><span class="eyebrow">A few helpful details</span><h2>Before we set<br>the table.</h2><p>Have something else in mind?<br><a href="tel:+17323171175">Let’s talk: (732) 317-1175</a></p></div><div><details><summary>Where do you cater?</summary><p>We cater events across New York and New Jersey from our home in New Brunswick. Include your venue or city in your inquiry so we can confirm travel and setup details.</p></details><details><summary>Can I customize my menu?</summary><p>Yes. Use the menu planner to share your favorite stations, or tell us what you have in mind. We’ll work with you on a menu that suits your event.</p></details><details><summary>How do you handle dietary needs and allergies?</summary><p>Include dietary requirements and allergies in your inquiry. Our team will discuss ingredients, preparation, and what we can accommodate before you confirm your menu.</p></details><details><summary>Does sending an inquiry book my date?</summary><p>No. We’ll first confirm availability, service details, and pricing with you. Your event is booked only once the arrangements are confirmed directly with our team.</p></details><details><summary>What should I include in my catering budget?</summary><p>Food, service style, staffing, equipment, travel, and applicable taxes can affect the total. Share your overall budget and we’ll discuss what fits.</p></details><details id="privacy"><summary>How are my inquiry details used?</summary><p>Your contact information and event details are stored to help our catering team review and respond to your request. We don’t ask for payment information here. Your menu shortlist is saved in this browser; use “Clear selections” to remove it. Contact us at catering@chaichenak.catering to ask about your inquiry or request its deletion.</p></details></div></div></section>
+<section class="faq-section" id="faq"><div class="wrap faq-layout"><div><span class="eyebrow">A few helpful details</span><h2>Before we set<br>the table.</h2><p>Have something else in mind?<br><a href="tel:+17323171175">Let’s talk: (732) 317-1175</a></p></div><div><details><summary>Where do you cater?</summary><p>We cater events across New York and New Jersey from our home in New Brunswick. Include your venue or city in your inquiry so we can confirm travel and setup details.</p></details><details><summary>Can I customize my menu?</summary><p>Yes. Use the menu planner to share your favorite stations, or tell us what you have in mind. We’ll work with you on a menu that suits your event.</p></details><details><summary>How do you handle dietary needs and allergies?</summary><p>Include dietary requirements and allergies in your inquiry. Our team will discuss ingredients, preparation, and what we can accommodate before you confirm your menu.</p></details><details><summary>Does sending an inquiry book my date?</summary><p>No. We’ll first confirm availability, service details, and pricing with you. Your event is booked only once the arrangements are confirmed directly with our team.</p></details><details><summary>What should I include in my catering budget?</summary><p>Food, service style, staffing, equipment, travel, and applicable taxes can affect the total. Share your overall budget and we’ll discuss what fits.</p></details><details id="privacy"><summary>How are my inquiry details used?</summary><p>Your contact information and event details are stored to help our catering team review and respond to your request. We don’t ask for payment information here. Your menu shortlist is saved in this browser; use “Clear selections” to remove it. Contact us at chaichenakcatering@gmail.com to ask about your inquiry or request its deletion.</p></details></div></div></section>
 </main>
 <footer>
   <div class="wrap">
@@ -357,7 +238,7 @@
       </div>
       <div class="footer-col">
         <h4>Contact Us</h4>
-        <ul><li><a href="tel:+17323171175">(732) 317-1175</a></li><li><a href="mailto:catering@chaichenak.catering">catering@chaichenak.catering</a></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=351+George+St+New+Brunswick+NJ">351 George St, New Brunswick, NJ</a></li></ul>
+        <ul><li><a href="tel:+17323171175">(732) 317-1175</a></li><li><a href="mailto:chaichenakcatering@gmail.com">chaichenakcatering@gmail.com</a></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=351+George+St+New+Brunswick+NJ">351 George St, New Brunswick, NJ</a></li></ul>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
@@ -365,7 +246,7 @@
       </div>
       <div class="footer-col">
         <h4>Menus</h4>
-        <ul><li><a href="#menu">Kebabs &amp; Small Bites</a></li><li><a href="#menu">Full Buffet</a></li><li><a href="#menu">Platters</a></li></ul>
+        <ul><li><a href="/menu">Kebabs &amp; Small Bites</a></li><li><a href="/menu">Full Buffet</a></li><li><a href="/menu">Platters</a></li></ul>
       </div>
     </div>
     <div class="footer-bottom">
@@ -378,5 +259,5 @@
 
 
 <script type="module" src="/app.js"></script>
-<dialog id="gallery-dialog" aria-label="Event photograph"><button type="button" id="close-gallery" aria-label="Close photograph">×</button><img id="gallery-image" alt=""><p id="gallery-caption"></p><div class="gallery-navigation"><button type="button" id="gallery-prev">← Previous</button><button type="button" id="gallery-next">Next →</button></div></dialog><a class="mobile-plan" href="#contact">Plan your event <span aria-hidden="true">↗</span></a><div id="toast" role="status"></div></body>
+<dialog id="gallery-dialog" aria-label="Event photograph"><button type="button" id="close-gallery" aria-label="Close photograph">×</button><img id="gallery-image" alt=""><p id="gallery-caption"></p><div class="gallery-navigation"><button type="button" id="gallery-prev">← Previous</button><button type="button" id="gallery-next">Next →</button></div></dialog><a class="mobile-plan" href="#contact">Plan your event <span aria-hidden="true">↗</span></a><div id="toast" role="status"></div><dialog id="station-dialog" class="station-dialog" aria-labelledby="station-dialog-title"><button type="button" id="close-station" class="dialog-close" aria-label="Close station details">×</button><div class="station-dialog-layout"><div class="station-player"><video id="station-video" controls playsinline loop muted preload="none" aria-label="Station event film"></video><img id="station-dialog-image" alt="" hidden><span class="station-film-note">A moment from a Chai Chenak event · silent film</span></div><div class="station-dialog-copy"><span id="station-dialog-category" class="eyebrow"></span><h2 id="station-dialog-title"></h2><p id="station-dialog-description"></p><p class="station-dialog-note">We’ll tailor your station to your guest count, venue, and event. Share dietary needs and allergies with our team when you inquire.</p><button type="button" class="btn btn-primary" id="station-dialog-add">Add to your event</button><a href="/menu#event-plan" class="underlined-link" id="station-view-plan">View your event plan ↗</a><div class="station-dialog-navigation"><button type="button" id="station-prev" aria-label="Previous station">←</button><span id="station-position"></span><button type="button" id="station-next" aria-label="Next station">→</button></div></div></div></dialog></body>
 </html>

@@ -1,2 +1,3 @@
-# Local development only. In Sites, set ADMIN_EMAIL as a runtime secret.
-ADMIN_EMAIL="owner@example.com"
+# Owner username: admin. Generate a random password of at least 32 characters.
+# Keep the real password in .dev.vars locally and a runtime secret in production.
+ADMIN_PASSWORD=""
