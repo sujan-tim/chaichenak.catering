@@ -1,0 +1,32 @@
+.chat-launcher{position:fixed;right:24px;bottom:24px;z-index:120;display:flex;align-items:center;gap:12px;border:1px solid #d9c49d;border-radius:40px;padding:14px 21px;background:#172b29;color:#fffdf9;box-shadow:0 6px 26px #172b2926;cursor:pointer;font-size:13px;font-weight:500;min-height:52px}
+.chat-launcher svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6}
+.customer-chat{position:fixed;inset:auto 24px 88px auto;z-index:121;width:min(390px,calc(100vw - 32px));height:min(620px,calc(100dvh - 120px));max-width:none;max-height:none;margin:0;padding:0;border:1px solid #d9c49d;border-radius:18px;background:var(--cream-2);color:var(--ink);box-shadow:0 18px 70px #172b2933;overflow:hidden}
+.customer-chat[open]{display:flex;flex-direction:column}
+.customer-chat::backdrop{background:#14201a40}
+.chat-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px;background:#172b29;color:#fffdf9;flex-shrink:0}
+.chat-header h2{font-family:var(--font-display);font-size:23px;font-weight:400;line-height:1.2;margin:0}
+.chat-header p{font-size:11px;letter-spacing:.06em;margin:5px 0 0;color:#e2c493}
+.chat-icon-button{border:1px solid #ffffff45;background:transparent;color:inherit;border-radius:50%;width:40px;height:40px;flex-shrink:0;cursor:pointer;font-size:25px;line-height:1}
+.chat-body{min-height:0;flex:1;overflow:auto;overscroll-behavior:contain;padding:20px;scroll-behavior:auto}
+.chat-welcome{font-family:var(--font-display);font-size:24px;line-height:1.3;margin-bottom:10px}
+.chat-intro{font-size:13px;color:var(--ink-70);margin-bottom:17px}
+.chat-suggestions{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}
+.chat-suggestions button,.chat-links a{font-size:12px;border:1px solid var(--line);border-radius:18px;padding:8px 12px;min-height:36px;background:var(--cream-2);color:var(--brand-copper);cursor:pointer}
+.chat-suggestions button:hover,.chat-links a:hover{background:#eee6d6}
+.chat-message{font-size:13px;line-height:1.7;padding:12px 14px;border-radius:13px;margin-bottom:12px;overflow-wrap:anywhere;white-space:pre-wrap;background:#eee6d6}
+.chat-message-user{background:#172b29;color:#fffdf9;margin-left:25px}
+.chat-message-label{display:block;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
+.chat-links{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+.chat-status{font-size:12px;line-height:1.6;color:var(--brand-copper);margin-top:8px;overflow-wrap:anywhere}
+.chat-compose{border-top:1px solid var(--line);padding:14px 18px;background:var(--cream-2);flex-shrink:0}
+.chat-input-row{display:flex;align-items:end;gap:8px}
+.chat-compose textarea{width:100%;min-width:0;border:1px solid var(--line);border-radius:10px;background:#fffdf9;padding:10px 12px;font-size:16px;line-height:1.5;min-height:48px;max-height:100px;resize:vertical;color:var(--ink)}
+.chat-send{border:0;background:#172b29;color:#fffdf9;border-radius:10px;min-width:50px;min-height:48px;padding:10px;cursor:pointer;font-size:13px}
+.chat-send:disabled,.chat-suggestions button:disabled{opacity:.5;cursor:wait}
+.chat-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11px;margin-top:10px;color:var(--ink-70)}
+.chat-footer a{text-decoration:underline;color:var(--brand-copper)}
+.chat-reset{font-size:11px;background:none;border:0;text-decoration:underline;color:var(--ink-70);padding:3px;cursor:pointer}
+.chat-privacy{font-size:10px;line-height:1.6;color:var(--ink-70);margin-top:9px}
+@media(max-width:600px){.chat-launcher{right:16px;bottom:calc(74px + env(safe-area-inset-bottom));padding:12px 16px;font-size:12px}.customer-chat{right:16px;bottom:calc(138px + env(safe-area-inset-bottom));height:min(570px,calc(100dvh - 158px - env(safe-area-inset-bottom)))}.chat-header{padding:16px}.chat-body{padding:16px}.chat-compose{padding:12px 14px}.chat-welcome{font-size:22px}}
+@media(max-height:550px){.customer-chat{bottom:12px;height:calc(100dvh - 24px)}.chat-header{padding:10px 16px}.chat-intro{margin-bottom:10px}}
+@media print{.chat-launcher,.customer-chat{display:none!important}}

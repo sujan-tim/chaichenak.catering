@@ -3,10 +3,10 @@ import {test,expect} from '@playwright/test';
 test('menu planning, mobile navigation, gallery and responsive layout',async({page})=>{
   const errors=[];page.on('pageerror',error=>errors.push(error.message));
   await page.goto('/');await expect(page.locator('h1')).toHaveCount(1);
-  await page.locator('[data-menu="chaat"]').click();await page.locator('#view-full-menu').click();await expect(page).toHaveURL(/\/menu$/);await expect(page.locator('#selection-count')).toContainText('1 experience');
-  await page.locator('#plan-guests').fill('125');await page.locator('#plan-budget').fill('5000');await expect(page.locator('#per-guest')).toHaveText('$40.00');
-  await page.reload();await expect(page.locator('[data-menu="chaat"]')).toHaveAttribute('aria-pressed','true');
-  await page.locator('[data-filter="sweet"]').click();await expect(page.locator('.menu-card')).toHaveCount(7);
+  await page.locator('[data-menu="chaat"]').click();await page.locator('#view-full-menu').click();await expect(page).toHaveURL(/\/menu$/);await expect(page.locator('#selection-count')).toContainText('1 selection');
+  await page.locator('#plan-guests').fill('125');await page.locator('#plan-venue').fill('New Brunswick');
+  await page.reload();await expect(page.locator('[data-menu="chaat"]')).toHaveAttribute('aria-pressed','true');await expect(page.locator('#plan-guests')).toHaveValue('125');await expect(page.locator('#plan-venue')).toHaveValue('New Brunswick');
+  await page.locator('[data-filter="sweet"]').click();await expect(page.locator('.menu-card')).toHaveCount(29);
   await page.locator('#menu-search').fill('unmatched');await expect(page.locator('#menu-empty')).toBeVisible();await page.locator('#menu-search').fill('');
   await page.goto('/#gallery');await page.locator('.g-item').first().click();await expect(page.locator('#gallery-dialog')).toBeVisible();await page.keyboard.press('ArrowRight');await expect(page.locator('#gallery-caption')).toContainText('2 /');await page.keyboard.press('Escape');await expect(page.locator('#gallery-dialog')).not.toBeVisible();
   await page.evaluate(()=>scrollTo(0,0));await page.screenshot({path:'/tmp/chaichenak-hero.png'});

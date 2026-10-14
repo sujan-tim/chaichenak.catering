@@ -1,3 +1,8 @@
 # Owner username: admin. Generate a random password of at least 32 characters.
 # Keep the real password in .dev.vars locally and a runtime secret in production.
 ADMIN_PASSWORD=""
+
+# Optional: enables AI replies. With no key the chat uses the menu and FAQ guide.
+# Put a real key only in .dev.vars or the production Worker secret store.
+OPENAI_API_KEY=""
+OPENAI_MODEL="gpt-4.1-mini"

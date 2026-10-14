@@ -4,6 +4,11 @@ compatibility_date = "2025-03-01"
 assets = { directory = "./dist/client", binding = "ASSETS", run_worker_first = true }
 [[d1_databases]]
 binding = "DB"
-database_name = "chai-chenak-local"
-database_id = "00000000-0000-0000-0000-000000000000"
+database_name = "chaichenak-production"
+database_id = "92738082-400c-4d91-a125-366a6505cebc"
 migrations_dir = "drizzle"
+
+[[send_email]]
+name = "INQUIRY_EMAIL"
+destination_address = "chaichenakcatering@gmail.com"
+allowed_sender_addresses = ["inquiries@chaichenakcatering.com"]

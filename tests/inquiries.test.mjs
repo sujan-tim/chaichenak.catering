@@ -8,6 +8,7 @@ test('normalizes and validates a complete inquiry',()=>{const result=validateInq
 test('rejects invalid, impossible, and past event dates',()=>{for(const date of ['2026-02-30','2026-09-21','not-a-date','2026-13-01'])assert.throws(()=>validateInquiry({...sample(),date},now));});
 test('rejects invalid contact, consent, budget, guests and menu',()=>{for(const change of [{email:'oops'},{phone:'abc1234567'},{consent:false},{guests:0},{guests:1.5},{guests:10001},{budget:-1},{budget:'NaN'},{budget:4.5},{menu:['fake']},{occasion:'made-up'},{requestId:'1'},{firstName:''},{message:'x'.repeat(3001)}])assert.throws(()=>validateInquiry({...sample(),...change},now));});
 test('optional budget and time are accepted',()=>{assert.equal(validateInquiry({...sample(),budget:'',time:''},now).budget,null);});
+test('conference inquiries retain their selected occasion',()=>{assert.equal(validateInquiry({...sample(),occasion:'Conference / Meeting'},now).occasion,'Conference / Meeting');});
 const req = (body,options={}) => new Request('https://catering.example/api/inquiries',{method:'POST',headers:{'content-type':'application/json',...options.headers},body:JSON.stringify(body)});
 test('blocks cross-origin requests before database access',async()=>{const result=await worker.fetch(req(sample(),{headers:{origin:'https://other.example'}}),{},{});assert.equal(result.status,403);});
 test('rejects large payloads',async()=>{const result=await worker.fetch(req({...sample(),message:'x'.repeat(17000)}),{},{});assert.equal(result.status,413);});

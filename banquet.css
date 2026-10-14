@@ -1,0 +1,178 @@
+/* Banquet Hall: real event photography, generous type and a quiet invitation. */
+.banquet-page{padding:0 0 85px;background:var(--cream)}
+.banquet-hero{background:#172b29;color:#fffdf9;overflow:hidden}
+.banquet-hero-layout{display:grid;grid-template-columns:1.2fr 1fr;align-items:center;gap:72px;padding-top:68px;padding-bottom:62px}
+.banquet-hero-copy>.eyebrow{color:#e4c79c;font-size:10px;letter-spacing:.22em}
+.banquet-hero h1{font-size:clamp(44px,4.9vw,72px);font-weight:400;letter-spacing:-.045em;line-height:1.09;margin:27px 0}
+.banquet-hero h1 em{color:#e4c79c;font-weight:400}
+.banquet-hero-copy>p{max-width:42ch;font-size:14px;line-height:1.9;color:#e6e6db}
+.banquet-hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:20px 27px;margin-top:32px}
+.banquet-hero-actions .btn{font-size:11px;padding:15px 20px}
+.banquet-hero-link{display:inline-flex;align-items:center;gap:18px;padding:8px 0;border-bottom:1px solid #e4c79c6b;font-size:11px;color:#f1e3cc}
+.banquet-hero-signature{display:flex;align-items:center;gap:17px;margin-top:49px;padding-top:26px;border-top:1px solid #ffffff26;max-width:340px}
+.banquet-hero-signature>span{font-size:40px;color:#e4c79c;font-weight:400;line-height:1}
+.banquet-hero-signature p{font-size:11px;line-height:1.8;color:#e6e6db}
+.banquet-hero-signature em{font-family:var(--font-display);font-size:16px;color:#e4c79c}
+.banquet-hero-photo{position:relative;min-width:0;margin:0;padding:15px 0 0 15px}
+.banquet-hero-photo::before{content:'';position:absolute;inset:0 15px 56px 0;border:1px solid #d7b17c80;border-radius:240px 240px 0 0;pointer-events:none}
+.banquet-hero-photo img{position:relative;width:100%;height:565px;object-fit:cover;object-position:53% 60%;border-radius:240px 240px 0 0}
+.banquet-hero-photo figcaption{display:flex;justify-content:space-between;gap:16px;font-size:10px;line-height:1.6;padding:17px 0 0;color:#e4c79c}
+.banquet-hero-photo figcaption>span:first-child{text-transform:uppercase;letter-spacing:.12em;font-size:9px}
+.banquet-occasion-strip{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:28px;padding:23px 24px;background:#102220;border-top:1px solid #e4c79c26;font-size:11px;letter-spacing:.06em;color:#e9dfcc}
+.banquet-occasion-strip i{font-style:normal;color:#c8a673;font-size:13px}
+.hall-options{gap:0;margin:0;border-bottom:1px solid #d9cbb9}
+.hall-option{background:transparent;border:0;padding:31px 0 28px}
+.hall-option+.hall-option{padding-left:40px;border-left:1px solid #d9cbb9}
+.hall-option-conference{color:var(--ink);background:transparent}
+.hall-option .eyebrow,.hall-option-conference .eyebrow{font-size:9px;color:var(--brand-copper)}
+.hall-option h2{display:flex;align-items:center;gap:45px;font-size:25px;margin:8px 0}
+.hall-option h2 span{font-family:var(--font-body);font-size:22px;color:var(--brand-copper);transition:transform .25s}
+.hall-option:hover h2 span{transform:translate(3px,3px)}
+.hall-option p,.hall-option-conference p{font-size:12px;line-height:1.7;color:var(--ink-70);margin:0;max-width:46ch}
+.banquet-atmosphere{display:grid;grid-template-columns:1fr .8fr;align-items:center;gap:100px;padding:90px 0}
+.banquet-atmosphere h2,.banquet-menu-heading h2{font-size:clamp(36px,4vw,54px);font-weight:400;line-height:1.13;letter-spacing:-.035em;margin:20px 0 26px}
+.banquet-atmosphere-copy>p{font-size:14px;line-height:1.9;color:var(--ink-70);max-width:45ch;margin-bottom:19px}
+.banquet-atmosphere-copy>.underlined-link{margin-top:8px;color:var(--brand-copper)}
+.banquet-atmosphere-footnote{display:flex;gap:25px;align-items:center;padding-top:31px;margin-top:42px;border-top:1px solid #d9cbb9;max-width:410px}
+.banquet-atmosphere-footnote>span{font-family:var(--font-display);font-size:42px;color:#c4ae92;line-height:1}
+.banquet-atmosphere-footnote p{font-size:11px;letter-spacing:.025em;color:var(--ink-70);line-height:1.8}
+.banquet-tour{width:100%;max-width:360px;margin:0 auto;position:relative}
+.banquet-tour-frame{padding:12px;border:1px solid #c9b08f;background:var(--cream-2);box-shadow:20px 20px 0 #eee7db}
+.banquet-tour video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:contain;background:#172b29}
+.banquet-tour figcaption{display:flex;align-items:center;justify-content:space-between;gap:18px;font-size:10px;margin-top:31px}
+.banquet-tour figcaption .eyebrow{font-size:9px}
+.banquet-selection{padding:65px 0 0;scroll-margin-top:105px}
+.banquet-menu-heading{display:grid;grid-template-columns:1.2fr 1fr;align-items:end;gap:60px;margin-bottom:35px}
+.banquet-menu-heading h2{margin-bottom:0}
+.banquet-menu-heading>p{font-size:14px;color:var(--ink-70);line-height:1.9;max-width:41ch;padding-bottom:4px}
+.banquet-menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.banquet-menu-card{position:relative;min-width:0;padding:30px 36px 36px;border:1px solid #cdbba2;background:#fffdf9;display:flex;flex-direction:column}
+.banquet-menu-card-top{display:flex;align-items:center;justify-content:space-between;gap:15px;padding-bottom:19px;border-bottom:1px solid #d9cbb9}
+.banquet-menu-card-top .eyebrow{font-size:9px;letter-spacing:.16em}
+.banquet-menu-status{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-70)}
+.banquet-menu-art{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;height:215px;color:#ad8554}
+.banquet-menu-art svg{width:138px;height:138px;stroke:currentColor;stroke-width:.8}
+.banquet-menu-art>span{font-family:var(--font-display);font-size:18px;letter-spacing:.02em}
+.banquet-menu-card-copy{position:relative;margin-top:auto}
+.banquet-menu-number{position:absolute;right:0;top:-7px;font-family:var(--font-display);font-size:56px;line-height:1;color:#d6c7b3;font-weight:400}
+.banquet-menu-card h3{font-size:42px;line-height:1.2;font-weight:400;letter-spacing:-.03em;padding-right:75px;margin-bottom:14px}
+.banquet-menu-pricing{margin:0 0 20px}
+.banquet-menu-price{font-family:var(--font-display);font-size:25px;line-height:1.3;margin-bottom:9px;color:var(--brand-copper)}
+.banquet-menu-service{font-size:11px;line-height:1.8;color:var(--ink-70);max-width:40ch}
+.banquet-menu-card:nth-child(2) .banquet-menu-price{color:#e4c79c}
+.banquet-menu-card:nth-child(2) .banquet-menu-service{color:#e4e1d6}
+.banquet-menu-card-copy>p{font-size:13px;color:var(--ink-70);line-height:1.9;max-width:36ch;min-height:50px;margin-bottom:28px}
+.banquet-menu-inquiry{display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid #d9cbb9;padding-top:20px;font-size:12px;color:var(--brand-copper)}
+.banquet-menu-inquiry>span{font-size:22px;transition:transform .25s}
+.banquet-menu-inquiry:hover>span{transform:translate(3px,-3px)}
+.banquet-menu-card:nth-child(2){background:#172b29;border-color:#172b29;color:#fffdf9}
+.banquet-menu-card:nth-child(2) .banquet-menu-card-top,.banquet-menu-card:nth-child(2) .banquet-menu-inquiry{border-color:#e4c79c40}
+.banquet-menu-card:nth-child(2) .eyebrow,.banquet-menu-card:nth-child(2) .banquet-menu-art,.banquet-menu-card:nth-child(2) .banquet-menu-inquiry{color:#e4c79c}
+.banquet-menu-card:nth-child(2) .banquet-menu-status,.banquet-menu-card:nth-child(2) .banquet-menu-card-copy>p{color:#e4e1d6}
+.banquet-menu-card:nth-child(2) .banquet-menu-number{color:#8e9a8c}
+.banquet-menu-preview{display:block;margin:25px 0 28px;min-width:0}
+.banquet-menu-preview img{width:100%;height:auto;object-fit:contain}
+.banquet-menu-preview>span{display:flex;justify-content:space-between;font-size:11px;padding:14px 0 0;text-decoration:underline;text-underline-offset:4px}
+.banquet-menu-footnote{font-size:12px;color:var(--ink-70);text-align:center;margin-top:24px}
+.banquet-planning{display:grid;grid-template-columns:1fr 1fr;gap:80px;border-block:1px solid #d9cbb9;margin-top:75px;padding:62px 0}
+.banquet-planning-heading h2{font-size:clamp(32px,3.3vw,46px);line-height:1.16;font-weight:400;margin:19px 0 26px}
+.banquet-planning-steps{list-style:none;display:flex;flex-direction:column;justify-content:center;gap:23px}
+.banquet-planning-steps li{display:flex;gap:24px;padding-bottom:21px;border-bottom:1px solid #d9cbb9}
+.banquet-planning-steps li:last-child{padding-bottom:0;border:0}
+.banquet-planning-steps li>span{font-size:10px;color:var(--brand-copper);padding-top:7px}
+.banquet-planning-steps h3{font-size:24px;line-height:1.3;font-weight:400;margin-bottom:8px}
+.banquet-planning-steps p{font-size:12px;line-height:1.8;color:var(--ink-70);max-width:45ch}
+.conference-section{padding:48px;margin-top:65px;background:#f0eadf}
+.conference-overview{display:grid;grid-template-columns:1fr 320px;gap:60px;align-items:center}
+.conference-heading{display:block}
+.conference-heading h2{font-size:clamp(34px,3.8vw,50px)}
+.conference-heading>p{margin:25px 0;max-width:42ch}
+.conference-heading>.underlined-link{color:var(--brand-copper)}
+.conference-media{margin:0;max-width:none}
+.conference-media-card video{max-height:470px}
+.banquet-page a:focus-visible{outline:2px solid var(--brand-copper);outline-offset:6px}
+.banquet-hero a:focus-visible,.banquet-menu-card:nth-child(2) a:focus-visible{outline-color:#e4c79c}
+@media(max-width:1100px){
+ .banquet-hero-layout{gap:40px;grid-template-columns:1.2fr 1fr;padding-top:50px;padding-bottom:50px}
+ .banquet-hero-photo img{height:490px}
+ .banquet-atmosphere{gap:50px}
+ .banquet-menu-heading{gap:35px}
+ .conference-overview{grid-template-columns:1fr 280px;gap:35px}
+}
+@media(max-width:800px){
+ .banquet-hero-layout{grid-template-columns:1fr 1fr;gap:30px;padding-top:45px;padding-bottom:40px}
+ .banquet-hero h1{font-size:44px}
+ .banquet-hero-copy>p{font-size:12px}
+ .banquet-hero-actions{gap:15px}
+ .banquet-hero-signature{margin-top:30px;padding-top:20px}
+ .banquet-hero-photo img{height:440px}
+ .banquet-hero-photo figcaption{display:block}
+ .banquet-hero-photo figcaption>span{display:block}
+ .banquet-atmosphere{gap:35px;padding:65px 0}
+ .banquet-atmosphere h2,.banquet-menu-heading h2{font-size:37px}
+ .banquet-atmosphere-copy>p,.banquet-menu-heading>p{font-size:13px}
+ .banquet-menu-card{padding:25px}
+ .banquet-menu-heading{gap:30px}
+ .banquet-menu-card h3{font-size:34px}
+ .banquet-menu-number{font-size:46px}
+ .banquet-menu-card-top{align-items:flex-start;flex-direction:column;gap:8px}
+ .banquet-planning{gap:35px}
+ .conference-section{padding:30px}
+ .conference-overview{grid-template-columns:1fr 240px;gap:30px}
+}
+@media(max-width:600px){
+ .banquet-page{padding-bottom:55px}
+ .banquet-hero-layout{grid-template-columns:1fr;gap:38px;padding-top:38px;padding-bottom:32px}
+ .banquet-hero h1{font-size:clamp(40px,10.5vw,59px);margin:22px 0;line-height:1.08}
+ .banquet-hero-copy>.eyebrow{font-size:9px}
+ .banquet-hero-copy>p{font-size:13px;max-width:40ch}
+ .banquet-hero-actions{margin-top:24px;gap:19px}
+ .banquet-hero-actions .btn{font-size:11px;min-height:48px}
+ .banquet-hero-signature{margin-top:26px;padding-top:20px}
+ .banquet-hero-signature p{font-size:10px}
+ .banquet-hero-photo{max-width:380px;width:100%;margin:auto}
+ .banquet-hero-photo img{height:auto;aspect-ratio:4/5;object-position:center 63%}
+ .banquet-hero-photo figcaption{display:flex;font-size:9px}
+ .banquet-hero-photo figcaption>span:first-child{font-size:8px}
+ .banquet-occasion-strip{gap:9px;padding:18px 16px;font-size:9px;letter-spacing:0}
+ .banquet-occasion-strip i{font-size:9px}
+ .hall-options{grid-template-columns:1fr 1fr;gap:0;margin:0}
+ .hall-option{padding:24px 16px 23px 0}
+ .hall-option+.hall-option{padding:24px 0 23px 18px}
+ .hall-option h2{font-size:21px;gap:10px;line-height:1.15}
+ .hall-option h2 span{font-size:16px}
+ .hall-option .eyebrow{font-size:8px;letter-spacing:.08em}
+ .hall-option p,.hall-option-conference p{font-size:10px;line-height:1.7}
+ .banquet-atmosphere{grid-template-columns:1fr;gap:35px;padding:48px 0}
+ .banquet-atmosphere h2,.banquet-menu-heading h2{font-size:37px;line-height:1.15;margin:17px 0 23px}
+ .banquet-atmosphere-copy>p{font-size:13px}
+ .banquet-atmosphere-footnote{margin-top:25px;padding-top:23px}
+ .banquet-tour{max-width:300px;padding-right:12px}
+ .banquet-tour-frame{padding:9px;box-shadow:12px 12px 0 #eee7db}
+ .banquet-tour figcaption{margin-top:24px;gap:12px;font-size:9px}
+ .banquet-tour figcaption .eyebrow{font-size:8px}
+ .banquet-selection{padding-top:40px}
+ .banquet-menu-heading{grid-template-columns:1fr;gap:0;margin-bottom:27px}
+ .banquet-menu-heading h2{margin-bottom:20px}
+ .banquet-menu-grid{grid-template-columns:1fr;gap:22px}
+ .banquet-menu-card{padding:26px}
+ .banquet-menu-card-top{flex-direction:row;align-items:center;gap:10px}
+ .banquet-menu-card-top .eyebrow,.banquet-menu-status{font-size:8px}
+ .banquet-menu-art{height:190px}
+ .banquet-menu-art svg{width:125px;height:125px}
+ .banquet-menu-card h3{font-size:38px}
+ .banquet-menu-card-copy>p{font-size:12px}
+ .banquet-menu-footnote{font-size:11px;line-height:1.8;padding:0 8px}
+ .banquet-planning{grid-template-columns:1fr;gap:35px;margin-top:45px;padding:40px 0}
+ .banquet-planning-heading h2{font-size:34px}
+ .banquet-planning-heading .btn{font-size:11px}
+ .banquet-planning-steps{gap:19px}
+ .conference-section{padding:27px 23px;margin-top:45px}
+ .conference-overview{grid-template-columns:1fr;gap:30px}
+ .conference-heading h2{font-size:35px}
+ .conference-heading>p{font-size:13px;margin:21px 0}
+ .conference-media{max-width:300px;width:100%;margin:auto}
+ .conference-media-card video{max-height:none}
+ .conference-details{margin-top:28px}
+}
+@media(prefers-reduced-motion:reduce){.hall-option h2 span,.banquet-menu-inquiry>span{transition:none}}

@@ -1,6 +1,7 @@
 import { menu } from '../catalog.js';
+import { chat } from './assistant.js';
 const validMenu = new Set(menu.map(item => item.id));
-const occasions = new Set(['Wedding','Corporate Event','Private Party / Gala','Other']);
+const occasions = new Set(['Wedding','Corporate Event','Conference / Meeting','Private Party / Gala','Food Tasting','Other']);
 const headers = {'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'};
 const json = (data, status=200, extra={}) => Response.json(data,{status,headers:{...headers,...extra}});
 const trimmed = (value) => typeof value === 'string' ? value.trim() : '';
@@ -11,13 +12,16 @@ export function validateInquiry(raw, now = new Date()) {
     d[key]=trimmed(raw[key]);
     if(d[key].length>max) throw new Error('One of your fields is too long. Please shorten it and try again.');
   }
-  if(!d.firstName||!d.lastName||!d.venue) throw new Error('Please include your name and event venue or city.');
+  const isTasting=d.occasion==='Food Tasting';
+  if(!d.firstName||!d.lastName||(!d.venue&&!isTasting)) throw new Error('Please include your name and event venue or city.');
+  if(isTasting&&!d.time) throw new Error('Please choose a preferred tasting time.');
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) throw new Error('Please enter a valid email address.');
   if(!/^[+\d\s().-]+$/.test(d.phone)||d.phone.replace(/\D/g,'').length<7) throw new Error('Please enter a valid phone number.');
   const today=now.toLocaleDateString('en-CA',{timeZone:'America/New_York'});
   const eventDate=new Date(d.date+'T12:00:00Z');
   if(!/^\d{4}-\d{2}-\d{2}$/.test(d.date)||Number.isNaN(eventDate.valueOf())||eventDate.toISOString().slice(0,10)!==d.date||d.date<today) throw new Error('Please choose today or a future event date.');
   if(d.time&&!/^([01]\d|2[0-3]):[0-5]\d$/.test(d.time)) throw new Error('Please enter a valid event time.');
+  if(isTasting&&!d.venue)d.venue='Tasting location to be confirmed';
   d.guests=Number(raw.guests);d.budget=raw.budget===''||raw.budget==null?null:Number(raw.budget);
   if(!Number.isInteger(d.guests)||d.guests<1||d.guests>10000) throw new Error('Guest count must be a whole number between 1 and 10,000.');
   if(d.budget!==null&&(!Number.isInteger(d.budget)||d.budget<1||d.budget>10000000)) throw new Error('Please enter a valid total budget in whole dollars.');
@@ -37,6 +41,25 @@ async function limitedJSON(request){
   const buffer=new Uint8Array(total);let offset=0;for(const chunk of chunks){buffer.set(chunk,offset);offset+=chunk.length;}
   return JSON.parse(new TextDecoder().decode(buffer));
 }
+function inquiryEmail(data, reference) {
+  const menuNames=data.menu.map(id=>menu.find(item=>item.id===id)?.selectionName||id);
+  return [
+    `New catering inquiry — ${reference}`,
+    '',
+    `Name: ${data.firstName} ${data.lastName}`,
+    `Email: ${data.email}`,
+    `Phone: ${data.phone}`,
+    `Occasion: ${data.occasion}`,
+    `Event date: ${data.date}${data.time?` at ${data.time}`:''}`,
+    `Venue or city: ${data.venue}`,
+    `Guests: ${data.guests}`,
+    `Budget: ${data.budget===null?'Not provided':'$'+data.budget.toLocaleString('en-US')}`,
+    `Menu shortlist: ${menuNames.length?menuNames.join(', '):'No selections yet'}`,
+    '',
+    'Additional details:',
+    data.message||'None provided',
+  ].join('\n');
+}
 async function submit(request, env, ctx) {
   if(request.method!=='POST')return json({error:'Method not allowed.'},405,{'Allow':'POST'});
   const url=new URL(request.url),origin=request.headers.get('origin');
@@ -45,7 +68,7 @@ async function submit(request, env, ctx) {
   let raw;try{raw=await limitedJSON(request);}catch(error){return json({error:error.message==='size'?'Your inquiry is too large. Please shorten your message.':'Please check your inquiry and try again.'},error.message==='size'?413:400);}
   if(trimmed(raw?.website))return json({error:'Unable to submit this inquiry. Please call our team.'},400);
   let data;try{data=validateInquiry(raw);}catch(error){return json({error:error.message},400);}
-  if(!env.DB)return json({error:'Online inquiries are temporarily unavailable. Please call (732) 317-1175.'},503);
+  if(!env.DB)return json({error:'Online inquiries are temporarily unavailable. Please text +1 (732) 881-8544 or text/call +1 (908) 549-6293.'},503);
   try {
     const payloadHash=await hash(JSON.stringify(data));
     const previous=await env.DB.prepare('SELECT reference, payload_hash FROM inquiries WHERE id = ?').bind(data.requestId).first();
@@ -55,15 +78,22 @@ async function submit(request, env, ctx) {
     for(const identity of identities){
       const key=await hash(`${window}:${identity}`);
       const limit=await env.DB.prepare('INSERT INTO rate_limits (key, count, expires_at) VALUES (?, 1, ?) ON CONFLICT(key) DO UPDATE SET count = count + 1 RETURNING count').bind(key,(window+1)*3600000).first();
-      if(limit.count>5)return json({error:'Too many inquiries in a short time. Please try again later or call (732) 317-1175.'},429,{'Retry-After':String(Math.ceil(((window+1)*3600000-now)/1000))});
+      if(limit.count>5)return json({error:'Too many inquiries in a short time. Please try again later or text +1 (732) 881-8544 or text/call +1 (908) 549-6293.'},429,{'Retry-After':String(Math.ceil(((window+1)*3600000-now)/1000))});
     }
     const reference='CC-'+crypto.randomUUID().slice(0,8).toUpperCase(),createdAt=new Date().toISOString();
     await env.DB.prepare('INSERT INTO inquiries (id, payload_hash, reference, first_name, last_name, email, phone, occasion, event_date, event_time, venue, guests, budget, menu, message, consent_at, status, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT(id) DO NOTHING').bind(data.requestId,payloadHash,reference,data.firstName,data.lastName,data.email,data.phone,data.occasion,data.date,data.time||null,data.venue,data.guests,data.budget,JSON.stringify(data.menu),data.message,createdAt,'new',createdAt).run();
     const saved=await env.DB.prepare('SELECT reference, payload_hash FROM inquiries WHERE id = ?').bind(data.requestId).first();
     if(saved.payload_hash!==payloadHash)return json({error:'This request has changed. Please reload and try again.'},409);
     ctx.waitUntil(env.DB.prepare('DELETE FROM rate_limits WHERE expires_at < ?').bind(now).run().catch(()=>console.error('Rate limit cleanup failed')));
+    if(env.INQUIRY_EMAIL)ctx.waitUntil(Promise.resolve().then(()=>env.INQUIRY_EMAIL.send({
+      to:'chaichenakcatering@gmail.com',
+      from:'inquiries@chaichenakcatering.com',
+      replyTo:data.email,
+      subject:`New catering inquiry — ${saved.reference}`,
+      text:inquiryEmail(data,saved.reference),
+    })).catch(()=>console.error('Inquiry email notification failed')));
     return json({reference:saved.reference},201);
-  } catch { console.error('Inquiry storage unavailable');return json({error:'We couldn’t save your inquiry. Please try again or call (732) 317-1175.'},503); }
+  } catch { console.error('Inquiry storage unavailable');return json({error:'We couldn’t save your inquiry. Please try again or text +1 (732) 881-8544 or text/call +1 (908) 549-6293.'},503); }
 }
 const statuses = new Set(['new','contacted','quoted','booked','closed']);
 async function isOwner(request, env) {
@@ -112,6 +142,7 @@ export default {
     }
     if(path.startsWith('/api/admin/'))return admin(request,env);
     if(path==='/api/inquiries')return submit(request,env,ctx);
+    if(path==='/api/chat')return chat(request,env,ctx,limitedJSON);
     if(path.startsWith('/api/'))return json({error:'Not found.'},404);
     if(!['GET','HEAD'].includes(request.method))return new Response('Method not allowed',{status:405,headers:{Allow:'GET, HEAD'}});
     const response=await env.ASSETS.fetch(request);
