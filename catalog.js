@@ -313,4 +313,4 @@ for(const item of menu) {
  item.selectionName = menu.some(other=>other.id!==item.id&&other.name===item.name)
   ? `${item.name} (${categories[item.category]})` : item.name;
 }
-export const featuredStationIds = ['east-asia-burmese-khow-suey-chicken','mexican-chicken-fajita-tacos-nacho-bar','pizza','chaat'];
+export const featuredStationIds = ['east-asia-burmese-khow-suey-chicken','east-asia-live-asian-station-indo-chinese','mexican-chicken-fajita-tacos-nacho-bar','pizza','chaat'];

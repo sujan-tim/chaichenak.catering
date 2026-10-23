@@ -53,9 +53,9 @@ test('refined desktop and mobile layouts render without overflow',async({page})=
  await page.locator('#menu').evaluate(el=>el.scrollIntoView({block:'start',behavior:'instant'}));await expect.poll(()=>page.locator('.station-media img').evaluateAll(images=>images.filter(image=>{const r=image.getBoundingClientRect();return r.top<innerHeight&&r.bottom>0;}).every(image=>image.complete&&image.naturalWidth>0))).toBe(true);await page.screenshot({path:'/tmp/chaichenak-review/new-mobile-stations.png'});
 });
 
-test('four homepage stations lead to the full buffet and dessert menu with a shared plan',async({page})=>{
+test('five homepage stations lead to the full buffet and dessert menu with a shared plan',async({page})=>{
  const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/');
- await expect(page.locator('.menu-card')).toHaveCount(4);await expect(page.locator('.experience-film')).toHaveCount(0);
+ await expect(page.locator('.menu-card')).toHaveCount(5);await expect(page.locator('.experience-film')).toHaveCount(0);
  await page.locator('[data-menu="pizza"]').click();await page.locator('#view-full-menu').click();await expect(page).toHaveURL(/\/menu$/);await expect(page.locator('h1')).toContainText('The menu.');await expect(page.locator('#selected-menu')).toContainText('Flatbread Pizza Live Station');
  await page.locator('[data-filter="savory"]').click();await expect(page.locator('[data-menu="pizza"]')).toHaveAttribute('aria-pressed','true');
  await page.locator('[data-filter="buffet"]').click();await expect(page.locator('.menu-card')).toHaveCount(78);
