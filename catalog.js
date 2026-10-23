@@ -294,7 +294,6 @@ The Bakery Table|Croissants, assorted breads, baguettes and cookies for breakfas
 The Paan Experience|Our colorful truck-art booth brings a memorable finishing touch to the celebration.|paan
 The Dessert Table|Build your sweet selection with live desserts, traditional favorites and dessert shooters.|desserts
 The Dessert Grazing Table|A dessert display to share. Choose the combination with our catering team.|dessert-grazing
-The Celebration Buffet|Build your spread with Pakistani mains, charcoal BBQ, rice and breads.|buffet
 BBQ Selection|Explore our charcoal BBQ choices to create your celebration spread.|bbq
 The Salad Selection|A colorful salad display to complement your mains.|salad
 `);
@@ -310,4 +309,4 @@ for(const item of menu) {
  item.selectionName = menu.some(other=>other.id!==item.id&&other.name===item.name)
   ? `${item.name} (${categories[item.category]})` : item.name;
 }
-export const featuredStationIds = ['bun-kebab','chaat','buffet','desserts','drinks'];
+export const featuredStationIds = ['bun-kebab','chaat','desserts','drinks'];

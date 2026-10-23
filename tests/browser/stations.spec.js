@@ -1,11 +1,11 @@
 import {test,expect} from '@playwright/test';
 import {menu} from '../../catalog.js';
 test('deleted main-course films are unavailable while their menu choices remain selectable',async({page,request})=>{
- const removed=['buffet','bbq','biryani','qorma','naan','karahi','dal'];
+ const removed=['bbq','biryani','qorma','naan','karahi','dal'];
  const requests=[];page.on('request',r=>requests.push(r.url()));
  await page.emulateMedia({reducedMotion:'reduce'});
  await page.goto('/');
- await expect(page.locator('[data-menu="buffet"]')).toBeVisible();
+ await expect(page.locator('[data-menu="buffet"]')).toHaveCount(0);
  await expect(page.locator('[data-watch="buffet"]')).toHaveCount(0);
  await expect(page.locator('img[src="/undefined"],video[data-src="/undefined"]')).toHaveCount(0);
  await page.goto('/menu');
@@ -17,7 +17,7 @@ test('deleted main-course films are unavailable while their menu choices remain 
   await page.locator(`[data-menu="${id}"]`).click();
   await expect(page.locator('#selected-menu')).toContainText(item.selectionName);
  }
- await page.reload();await expect(page.locator('#selected-menu li')).toHaveCount(7);
+ await page.reload();await expect(page.locator('#selected-menu li')).toHaveCount(6);
  await page.setViewportSize({width:390,height:844});await page.locator('[data-filter="buffet"]').click();
  await expect(page.locator('#menu-videos')).toHaveCount(0);
  await expect(page.locator('[data-menu="biryani"]')).toHaveAttribute('aria-pressed','true');
@@ -53,11 +53,11 @@ test('refined desktop and mobile layouts render without overflow',async({page})=
  await page.locator('#menu').evaluate(el=>el.scrollIntoView({block:'start',behavior:'instant'}));await expect.poll(()=>page.locator('.station-media img').evaluateAll(images=>images.filter(image=>{const r=image.getBoundingClientRect();return r.top<innerHeight&&r.bottom>0;}).every(image=>image.complete&&image.naturalWidth>0))).toBe(true);await page.screenshot({path:'/tmp/chaichenak-review/new-mobile-stations.png'});
 });
 
-test('five homepage stations lead to the full buffet and dessert menu with a shared plan',async({page})=>{
+test('four homepage stations lead to the full buffet and dessert menu with a shared plan',async({page})=>{
  const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/');
- await expect(page.locator('.menu-card')).toHaveCount(5);await expect(page.locator('.experience-film')).toHaveCount(0);
- await page.locator('[data-menu="buffet"]').click();await page.locator('#view-full-menu').click();await expect(page).toHaveURL(/\/menu$/);await expect(page.locator('h1')).toContainText('The menu.');await expect(page.locator('#selected-menu')).toContainText('The Celebration Buffet');
- await page.locator('[data-filter="displays"]').click();await expect(page.locator('[data-menu="buffet"]')).toHaveAttribute('aria-pressed','true');
+ await expect(page.locator('.menu-card')).toHaveCount(4);await expect(page.locator('.experience-film')).toHaveCount(0);
+ await page.locator('[data-menu="desserts"]').click();await page.locator('#view-full-menu').click();await expect(page).toHaveURL(/\/menu$/);await expect(page.locator('h1')).toContainText('The menu.');await expect(page.locator('#selected-menu')).toContainText('The Dessert Table');
+ await page.locator('[data-filter="displays"]').click();await expect(page.locator('[data-menu="desserts"]')).toHaveAttribute('aria-pressed','true');
  await page.locator('[data-filter="buffet"]').click();await expect(page.locator('.menu-card')).toHaveCount(78);
  await expect(page.locator('[data-watch="biryani"]')).toHaveCount(0);
  await page.locator('[data-menu="biryani"]').click();await page.locator('#plan-guests').fill('180');await page.locator('#plan-venue').fill('New Brunswick');
@@ -123,7 +123,7 @@ test('menu leads with playing station videos and keeps unfilmed choices below',a
  const errors=[];page.on('pageerror',error=>errors.push(error.message));
  await page.goto('/menu');
  await expect(page.locator('#menu-videos .menu-card')).toHaveCount(17);
- await expect(page.locator('#menu-more .menu-card')).toHaveCount(213);
+ await expect(page.locator('#menu-more .menu-card')).toHaveCount(212);
  expect(await page.locator('[data-menu]').evaluateAll(buttons=>new Set(buttons.map(button=>button.dataset.menu)).size)).toBe(menu.length);
  expect(await page.evaluate(()=>Boolean(document.querySelector('#menu-videos').compareDocumentPosition(document.querySelector('#menu-more'))&Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
  const first=page.locator('#menu-videos .station-preview').first();
@@ -152,7 +152,7 @@ test('menu leads with playing station videos and keeps unfilmed choices below',a
  await expect(page.locator('#menu-more .menu-card')).toHaveCount(16);
  await page.locator('[data-filter="displays"]').click();
  await expect(page.locator('#menu-videos .menu-card')).toHaveCount(7);
- await expect(page.locator('#menu-more .menu-card')).toHaveCount(2);
+ await expect(page.locator('#menu-more .menu-card')).toHaveCount(1);
  await expect(page.locator('#menu-more-link')).toBeVisible();
  await page.locator('[data-filter="all"]').click();
  await page.setViewportSize({width:390,height:844});
