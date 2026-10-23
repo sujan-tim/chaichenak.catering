@@ -28,7 +28,7 @@ test('deleted main-course films are unavailable while their menu choices remain 
 test('station collection, category navigation, video playback and full menu submission',async({page})=>{
  const errors=[];page.on('pageerror',error=>errors.push(error.message));await page.goto('/menu');
  await expect(page.locator('.menu-card')).toHaveCount(menu.length);
- await expect(page.locator('.menu-group')).toHaveCount(25);await expect(page.locator('.menu-group[open]')).toHaveCount(1);
+ await expect(page.locator('.menu-group')).toHaveCount(24);await expect(page.locator('.menu-group[open]')).toHaveCount(1);
  await page.locator('[data-watch="bun-kebab"]').click();await expect(page.locator('#station-dialog')).toBeVisible();await expect(page.locator('#station-dialog-title')).toHaveText('Bun Kebab (Chicken or Dal)');
  await expect.poll(()=>page.locator('#station-video').evaluate(video=>video.readyState)).toBeGreaterThanOrEqual(2);
  await page.locator('#station-dialog-add').click();await expect(page.locator('#selection-count')).toContainText('1 selection');await page.locator('#station-next').click();await expect(page.locator('#station-dialog-title')).toHaveText('Papri Chaat');
@@ -41,8 +41,8 @@ test('station collection, category navigation, video playback and full menu subm
  await page.locator('#event-type').selectOption('Private Party / Gala');await page.locator('#event-date').fill('2099-10-20');await page.locator('#venue').fill('Media QA Venue');await page.locator('#next-step').click();await page.locator('#first-name').fill('Station');await page.locator('#last-name').fill('QA');await page.locator('#email').fill(`station-${Date.now()}@example.com`);await page.locator('#phone').fill('7325551234');await page.locator('[name="consent"]').check();await page.locator('#submit-inquiry').click();await expect(page.locator('#inquiry-success')).toBeVisible();expect(errors).toEqual([]);
 });
 test('reduced motion skips automatic video downloads and keeps content visible',async({page})=>{
- await page.emulateMedia({reducedMotion:'reduce'});const requests=[];page.on('request',r=>{if(r.url().endsWith('.mp4'))requests.push(r.url());});await page.goto('/');await page.locator('#menu').scrollIntoViewIfNeeded();await page.locator('[data-watch="bun-kebab"]').hover();await expect(page.locator('#motion-toggle')).toHaveText('▷Reduced motion');expect(requests).toEqual([]);expect(await page.locator('#hero-film').evaluate(v=>v.paused)).toBe(true);
- await page.locator('[data-watch="bun-kebab"]').click();await expect(page.locator('#station-dialog')).toBeVisible();await expect.poll(()=>requests.length).toBeGreaterThan(0);
+ await page.emulateMedia({reducedMotion:'reduce'});const requests=[];page.on('request',r=>{if(r.url().endsWith('.mp4'))requests.push(r.url());});await page.goto('/');await page.locator('#menu').scrollIntoViewIfNeeded();await page.locator('[data-watch="pizza"]').hover();await expect(page.locator('#motion-toggle')).toHaveText('▷Reduced motion');expect(requests).toEqual([]);expect(await page.locator('#hero-film').evaluate(v=>v.paused)).toBe(true);
+ await page.locator('[data-watch="pizza"]').click();await expect(page.locator('#station-dialog')).toBeVisible();await expect.poll(()=>requests.length).toBeGreaterThan(0);
 });
 test('refined desktop and mobile layouts render without overflow',async({page})=>{
  await page.goto('/');await page.locator('#motion-toggle').click();
@@ -56,8 +56,8 @@ test('refined desktop and mobile layouts render without overflow',async({page})=
 test('four homepage stations lead to the full buffet and dessert menu with a shared plan',async({page})=>{
  const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/');
  await expect(page.locator('.menu-card')).toHaveCount(4);await expect(page.locator('.experience-film')).toHaveCount(0);
- await page.locator('[data-menu="desserts"]').click();await page.locator('#view-full-menu').click();await expect(page).toHaveURL(/\/menu$/);await expect(page.locator('h1')).toContainText('The menu.');await expect(page.locator('#selected-menu')).toContainText('The Dessert Table');
- await page.locator('[data-filter="displays"]').click();await expect(page.locator('[data-menu="desserts"]')).toHaveAttribute('aria-pressed','true');
+ await page.locator('[data-menu="pizza"]').click();await page.locator('#view-full-menu').click();await expect(page).toHaveURL(/\/menu$/);await expect(page.locator('h1')).toContainText('The menu.');await expect(page.locator('#selected-menu')).toContainText('Flatbread Pizza Live Station');
+ await page.locator('[data-filter="savory"]').click();await expect(page.locator('[data-menu="pizza"]')).toHaveAttribute('aria-pressed','true');
  await page.locator('[data-filter="buffet"]').click();await expect(page.locator('.menu-card')).toHaveCount(78);
  await expect(page.locator('[data-watch="biryani"]')).toHaveCount(0);
  await page.locator('[data-menu="biryani"]').click();await page.locator('#plan-guests').fill('180');await page.locator('#plan-venue').fill('New Brunswick');
@@ -122,8 +122,8 @@ test('supplied menu sections support search, service styles, surcharges and save
 test('menu leads with playing station videos and keeps unfilmed choices below',async({page})=>{
  const errors=[];page.on('pageerror',error=>errors.push(error.message));
  await page.goto('/menu');
- await expect(page.locator('#menu-videos .menu-card')).toHaveCount(17);
- await expect(page.locator('#menu-more .menu-card')).toHaveCount(212);
+ await expect(page.locator('#menu-videos .menu-card')).toHaveCount(24);
+ await expect(page.locator('#menu-more .menu-card')).toHaveCount(209);
  expect(await page.locator('[data-menu]').evaluateAll(buttons=>new Set(buttons.map(button=>button.dataset.menu)).size)).toBe(menu.length);
  expect(await page.evaluate(()=>Boolean(document.querySelector('#menu-videos').compareDocumentPosition(document.querySelector('#menu-more'))&Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
  const first=page.locator('#menu-videos .station-preview').first();

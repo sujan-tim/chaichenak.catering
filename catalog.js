@@ -55,12 +55,16 @@ Penne Pasta Live Station|Choose one sauce: Alfredo, marinara, creamy vodka, spic
 Flatbread Pizza Live Station|Made to order with grilled chicken, chicken tikka, halal pepperoni, onions, peppers, basil, olives, jalapeños or pineapple. Outdoor facility only; oven uses a propane tank.|pizza
 Live Bruschetta Station|Toasted hero bread with house sauce, arugula, beef or chicken steak, chopped tomatoes, onions and cilantro.
 Herb & Garlic Roasted Shrimp|Shrimp sautéed in butter, herb and garlic sauce.
+Fettuccine Cacio e Pepe|Fettuccine tossed in a creamy cacio e pepe sauce of pecorino and cracked black pepper.|fettuccine-cacio-e-pepe
+Beef Meatballs with Spaghetti|Beef meatballs served over spaghetti in a rich tomato sauce.|meatball-spaghetti
+Tuscan Herb Roasted Chicken|Chicken roasted with Tuscan herbs and garlic.|tuscan-chicken
 `);
 group('american','savory','American live stations','e0115f17-a19c-4ecd-9248-a3133992a8af.JPG',`
 Beef Smash Burger|Mini beef smash burger with cheese and smash sauce.
 Chicken Zinger Burger|Crispy fried chicken with cheese and zinger sauce.
 Artisan Grilled Cheese & Soup Bar|Made-to-order grilled cheese sandwiches with hot tomato basil or seasonal soup shooters.
 Mac and Cheese Station|White cheddar mac and cheese with turkey bacon, balsamic mushrooms, roasted onions and crispy herb breadcrumbs.
+New York Strip Steak|New York strip steak cooked to order and sliced for your guests.|ny-strip-steak
 `);
 group('premium','savory','Premium live station (main course)','Main course live station.JPG',`
 Chicken Kata Kut|Boneless chicken kata kut cooked to order.||Additional $3 per guest.
@@ -302,11 +306,11 @@ const groupOrder = new Map(categoryOrder.map((category,index)=>[category,index])
 menuGroups.sort((a,b)=>groupOrder.get(a.category)-groupOrder.get(b.category));
 const groupPositions = new Map(menuGroups.map((group,index)=>[group.id,index]));
 menu.sort((a,b)=>groupPositions.get(a.group)-groupPositions.get(b.group));
-const filmIds = new Set(['bun-kebab','chaat','pani-puri','crepe','grazing','drinks','pizza','thai-chili','bakery','omelette','shahi-tukra','fruit-custard','paan','desserts','mango-shooters','dessert-grazing','salad']);
+const filmIds = new Set(['bun-kebab','chaat','pani-puri','crepe','grazing','drinks','pizza','thai-chili','bakery','omelette','shahi-tukra','fruit-custard','paan','desserts','mango-shooters','dessert-grazing','salad','east-asia-live-asian-station-indo-chinese','east-asia-burmese-khow-suey-chicken','mexican-chicken-fajita-tacos-nacho-bar','fettuccine-cacio-e-pepe','meatball-spaghetti','tuscan-chicken','ny-strip-steak']);
 for(const item of menu) {
  if(filmIds.has(item.id)) Object.assign(item,{image:`media/${item.id}.webp`,video:`media/${item.id}.mp4`});
  // Distinguish the same dish offered as a live station and a non-live appetizer.
  item.selectionName = menu.some(other=>other.id!==item.id&&other.name===item.name)
   ? `${item.name} (${categories[item.category]})` : item.name;
 }
-export const featuredStationIds = ['bun-kebab','chaat','desserts','drinks'];
+export const featuredStationIds = ['east-asia-burmese-khow-suey-chicken','mexican-chicken-fajita-tacos-nacho-bar','pizza','chaat'];

@@ -16,6 +16,13 @@ export const stationMedia = [
   {id:'desserts',file:'Desert/Desert.MOV'},
   {id:'mango-shooters',file:'Desert/Mango Shooter.MOV'},
   {id:'dessert-grazing',file:'Desert/Grazing table .MOV'},
+  {id:'east-asia-live-asian-station-indo-chinese',file:'new media /Asian Station.MOV'},
+  {id:'east-asia-burmese-khow-suey-chicken',file:'new media /Burmese khousay.MOV'},
+  {id:'mexican-chicken-fajita-tacos-nacho-bar',file:'new media /Mexican Station.MOV'},
+  {id:'fettuccine-cacio-e-pepe',file:'new media /fettuccine pasta in cacio E pepe sauce .MOV'},
+  {id:'meatball-spaghetti',file:'new media /Beef Meatballs with spaghetti.MOV'},
+  {id:'tuscan-chicken',file:'new media /Tuscan Herb Roasted chicken.MOV'},
+  {id:'ny-strip-steak',file:'new media /New York Strip Steak.MOV'},
   {id:'banquet-hall',file:'../Banquet/Banquet video.mov',duration:40},
   {id:'conference-hall',file:'../Banquet/conference hall/IMG_5462.MOV',duration:8},
 ];
